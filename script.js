@@ -75,7 +75,7 @@ function logprocess() {
 
   // Validate input fields
   if (validate_email(email) == false || validate_password(password) == false) {
-    alert('Email or Password is Outta Line!!')
+    alert('Email or Password is needed!!')
     return
     // Don't continue running the code
   }
@@ -98,7 +98,7 @@ function logprocess() {
 
     // DOne
     alert('User Logged In!!')
-    window.location.href='index.html'
+    window.location.href=''
 
   })
   .catch(function(error) {
