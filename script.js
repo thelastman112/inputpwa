@@ -98,15 +98,16 @@ function logprocess() {
 
     // DOne
     alert('User Logged In!!')
-    window.location.href=''
+    window.location.href='../index.html'
 
   })
   .catch(function(error) {
     // Firebase will use this to alert of its errors
     var error_code = error.code
     var error_message = error.message
+    alert('User is not registered.')
 
-    alert(error_message)
+    // alert(error_message)
   })
 }
 
