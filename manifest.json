@@ -1,0 +1,15 @@
+{
+    "short_name": "PWA REALTIME DATABASE",
+    "name": "Antrian Sembako",
+    "description": "Web Antrian Sembako dengan PWA",
+    "display": "standalone",
+    "icons": [
+      {
+        "src": "image/icon-144.png",
+        "sizes": "144x144",
+        "type": "image/png"
+      }
+    ],
+    "start_url": ".",
+    "theme_color": "#FFFFFF"
+  }

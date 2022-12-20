@@ -1,6 +1,5 @@
  #bodyback {
     height: 100vh;
-    background:  linear-gradient(140deg, #EADEDB 0%, #BC70A4 50%, #BFD641 75%);
  }
 
  body#reg_log {
@@ -10,11 +9,10 @@
     height: 100vh;
     width: 100vw;
     margin: 0px; 
-    background-image: linear-gradient(140deg, #EADEDB 0%, #BC70A4 50%, #BFD641 75%);
 }
 
 h3 {
-    background:  linear-gradient(140deg, #EADEDB 0%, #BC70A4 50%, #BFD641 75%);
+    background-color: #ffffff;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     border-radius: 10%;
@@ -35,4 +33,13 @@ h3 {
 
 #homelog{
     margin-right: 159px;
+}
+
+#number {
+    table-layout: auto;
+    width: 1%;
+}
+
+#Firstname {
+    table-layout: auto;
 }
