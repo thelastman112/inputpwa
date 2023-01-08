@@ -52,54 +52,21 @@
       <div class="collapse pb-4" id="inputdata">
         <div class="card card-body">
           <form id="forminput">
-            <label class="row ms-1">First Name</label>
-            <input type="text" class="form-control" id="FirstName">
-            <label class="row ms-1">Last Name</label>
-            <input type="text" class="form-control mb-3" id="LastName">
-            <select class="form-select mb-3" id="SocMed">
-              <option value="" disabled hidden selected>Pick one of the
-                option</option>
-              <option value="Twitter">Twitter</option>
-              <option value="Instagram">Instagram</option>
-              <option value="Facebook">Facebook</option>
-            </select>
+            <label class="row ms-1">NIK</label>
+            <input type="text" class="form-control" id="nik">
+            <label class="row ms-1">Nama Peminta</label>
+            <input type="text" class="form-control" id="peminta">
+            <label class="row ms-1">Alamat</label>
+            <input type="text" class="form-control mb-3" id="alamat">
+            <textarea id="sembako" class="form-control mb-3" placeholder="Permintaan Sembako:..."></textarea>
           </form>
           <div class="d-flex flex-row-reverse">
-            <button type="submit" class="btn btn-primary "
+            <button type="submit" 
+            id="input" class="btn btn-primary "
               onclick="inputdata()">Create</button>
           </div>
         </div>
       </div>
-      <table class="table table-dark table-striped-columns">
-        <thead>
-          <tr>
-            <th scope="col" id="number">No.</th>
-            <th scope="col" id="Firstname">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Social Media</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>Twitter</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>Instagram</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry the Bird</td>
-            <td></td>
-            <td>Facebook</td>
-          </tr>
-        </tbody>
-      </table>
 
     </body>
     <script src="/pwa.js"></script>

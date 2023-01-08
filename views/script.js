@@ -99,7 +99,7 @@ function logprocess() {
 
       // DOne
       alert('User Logged In!!')
-      window.location.href = '../index.html'
+      window.location.href = '../admin.html'
 
     })
     .catch(function (error) {
@@ -148,22 +148,215 @@ function validate_field(field) {
   }
 }
 
+function outprocess() {
+  auth.signOut()
+  alert('User Logged Out!!')
+  window.location.href = '../index.html'
+}
+
 function inputdata() {
-  firstname = document.getElementById('FirstName').value
-  lastname = document.getElementById('LastName').value
-  socialmedia = document.getElementById('SocMed').value
+  nik = document.getElementById('nik').value
+  peminta = document.getElementById('peminta').value
+  alamat = document.getElementById('alamat').value
+  sembako = document.getElementById('sembako').value
 
-  var data = {
-    firstname: firstname,
-    lastname: lastname,
-    socialmedia: socialmedia
+  if (nik == "" || peminta == "" || alamat == "" || sembako == "") {
+    alert('Please Input Data!!')
+    return
+    // Don't continue running the code
+  } else {
+    var data = {
+      nik: nik,
+      peminta: peminta,
+      alamat: alamat,
+      sembako: sembako
+    }
+    database.ref('dataname/' + nik).set(data)
+  
+    // alert('Success')
+    document.getElementById('forminput').reset()
   }
-  database.ref('dataname').push(data)
-  
-  alert('Success')
-  document.getElementById('forminput').reset()
 }
 
-function readdata() {
+var ref = database.ref('dataname')
+
+// it used to show the data from firebase
+// function showdata() {
+  // ref.child('2').child('userid').get().then((snapshot) => {
+  //   if (snapshot.exists()) {
+  //     console.log(snapshot.val());
+  //   } else {
+  //     console.log("No data available");
+  //   }
+  // }).catch((error) => {
+  //   console.error(error);
+  // });
+
+// }
+
+
+//its working but avoid using it
+// var stdNo=0;
+// function listing(firstname, lastname, socialmedia){
+//   var ul = document.getElementById('list')
+//   var header = document.createElement('h2')
+
+//   var _firstname = document.createElement('li');
+//   var _lastname =  document.createElement('li');
+//   var _socialmedia =  document.createElement('li') 
+
+//   header.innerHTML = 'Student-' + (++stdNo);
+
+//   _firstname.innerHTML = 'name : ' + firstname;
+//   _lastname.innerHTML = 'name : ' + lastname;
+//   _socialmedia.innerHTML = 'name : ' + socialmedia;
+
+//   ul.appendChild(header);
+//   ul.appendChild(_firstname);
+//   ul.appendChild(_lastname);
+//   ul.appendChild(_socialmedia);
+
+// }
+
+// function showdata() {
+//   ref.once('value', function(snapshot){
+//     snapshot.forEach(
+//       function(ChildSnapshot){
+//         let sfirstname = ChildSnapshot.val().firstname;
+//         let slastname = ChildSnapshot.val().lastname;
+//         let ssocialmedia = ChildSnapshot.val().socialmedia;
+//         console.log(sfirstname, slastname, ssocialmedia);
+//         listing(sfirstname,slastname,ssocialmedia)
+//       }
+//     )
+//   })
+// }
+
+// its working at its finest
+// var stdNo = 0;
+// var tbody = document.getElementById('tb1');
+// function listing(peminta, alamat, sembako) {
+//   let trow = document.createElement('tr');
+//   let td1 = document.createElement('td');
+//   let td2 = document.createElement('td');
+//   let td3 = document.createElement('td');
+//   let td4 = document.createElement('td');
+
+//   td1.innerHTML = ++stdNo;
+//   td2.innerHTML = peminta;
+//   td3.innerHTML = alamat;
+//   td4.innerHTML = sembako;
+
+//   trow.appendChild(td1);
+//   trow.appendChild(td2);
+//   trow.appendChild(td3);
+//   trow.appendChild(td4);
+
+//   tbody.appendChild(trow);
+
+// }
+
+// function getdata(theStudent) {
+//   stdNo = 0;
+//   tbody.innerHTML = "";
+//   theStudent.forEach(element => {
+//     listing(element.peminta, element.alamat, element.sembako);
+//     getid(element.nik)
+//   })
+// }
+
+// function showdata() {
+//   ref.get()
+//     .then((snapshot) => {
+//       var student = [];
+//       snapshot.forEach(ChildSnapshot => {
+//         student.push(ChildSnapshot.val())
+//       })
+
+//       getdata(student)
+//     })
+// }
+
+// function getid(userid){
+//   let uid = userid
+//   console.log(uid)
+//   return uid
+// }
+
+let permission = Notification.permission
+
+const input = document.getElementById('input')
+console.log('clicked')
+input.addEventListener("click", () => {
+  if (permission === "granted") {
+    showNotification();
+  } else if (permission === "default") {
+    requestAndShowPermission();
+  } else {
+    alert("Use normal alert");
+  }
+
+  function requestAndShowPermission() {
+    Notification.requestPermission(function (permission) {
+      if (permission === "granted") {
+        showNotification();
+      }
+    });
+  }
+
   
-}
+
+  function showNotification() {
+    let tag = "Input Data Success";
+    let title = " Data Changed";
+    let icon = 'image/icon-144.png'; //this is a large image may take more time to show notifiction, replace with small size icon
+    // let body = innerHTML ;
+    let body = `Data Input Successfully Updated`;
+    // let innerHTML = `<h2>${data[0].name.common}</h2>`;
+
+    let notification = new Notification(title, { tag, body, icon });
+    notification.onclick = () => {
+      notification.close();
+      window.focus('../admin.html');
+    }
+    setTimeout(() => notification.close(), 5 * 1000)
+  }
+})
+
+// const show = document.getElementById('show')
+// show.addEventListener("click", () => {
+//   if (permission === "granted") {
+//     showNotification();
+//   } else if (permission === "default") {
+//     requestAndShowPermission();
+//   } else {
+//     alert("Use normal alert");
+//   }
+
+//   function requestAndShowPermission() {
+//     Notification.requestPermission(function (permission) {
+//       if (permission === "granted") {
+//         showNotification();
+//       }
+//     });
+//   }
+
+  
+
+//   function showNotification() {
+//     let gid = new getid
+//     let tag = "PWA notification";
+//     let title = " Data Changed";
+//     let icon = 'image/icon-144.png'; //this is a large image may take more time to show notifiction, replace with small size icon
+//     // let body = innerHTML ;
+//     let body = `Someone input another data, new data is ${highid}`;
+//     // let innerHTML = `<h2>${data[0].name.common}</h2>`;
+
+//     let notification = new Notification(title, { tag, body, icon });
+//     notification.onclick = () => {
+//       notification.close();
+//       window.focus('../admin.html');
+//     }
+//     setTimeout(() => notification.close(), 5 * 1000)
+//   }
+// })
